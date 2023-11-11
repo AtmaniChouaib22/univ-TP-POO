@@ -1,28 +1,22 @@
 package exo;
 
+import java.util.Arrays;
+
 public abstract class Tableau {
-    protected Etudiant[] tab;
+    protected Etudiant[] tabNonTrie;
     protected Etudiant[] tabTrie;
 
-    public Tableau(Etudiant[] tab, Etudiant[] tabTrie) {
-        this.tab = tab;
-        this.tabTrie = tabTrie;
+    public Tableau(Etudiant[] tab) {
+        this.tabNonTrie = Arrays.copyOf(tab, tab.length);
+        this.tabTrie = new Etudiant[tab.length];
     }
 
-    public void afficher(Etudiant[] tab){
-        System.out.println("Informations des étudiants non triées :");
-        for (int i = 0; i < tab.length; i++) {
-            System.out.println(tab[i]);
-        }
-    }
-    public void afficherTrie(Etudiant[] tabTrie){
-        System.out.println("Informations des étudiants triées :");
-        for (int i = 0; i < tabTrie.length; i++) {
-            System.out.println(tabTrie[i]);
-        }
-    }
-    public abstract Etudiant[] triBulle(Etudiant[] tab) ;
-    public abstract Etudiant[] triInsertion(Etudiant[] tab) ;
-    public abstract Etudiant[] triSelection(Etudiant[] tab) ;
+    public abstract void afficheTabNonTrie();
+
+    public abstract void afficheTabTrie();
+
+    public abstract Etudiant[] triBulle() ;
+    public abstract Etudiant[] triInsertion() ;
+    public abstract Etudiant[] triSelection() ;
 
 }
